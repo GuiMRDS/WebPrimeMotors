@@ -1,0 +1,25 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Apagar Veiculo";
+}
+
+<div class="d-flex justify-content-center align-items-center" style="padding: 40px; min-height: calc(100vh - 20px);">
+    <div class="card shadow-sm" style="flex: 1; max-width: 750px; width: 100%;">
+        <div class="card-body p-5 text-center">
+            <h2 class="card-title text-danger mb-4">
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                Confirmar Exclusão
+            </h2>
+            <p class="fs-5">Deseja realmente apagar o veiculo: <strong>@Model.Carro</strong>?</p>
+
+            <div class="d-flex justify-content-center gap-3 mt-5">
+                <a class="btn btn-secondary btn-lg px-4" asp-controller="Veiculo" asp-action="Index">
+                    <i class="bi bi-x-circle me-2"></i> Cancelar
+                </a>
+                <a class="btn btn-danger btn-lg px-4" asp-controller="Veiculo" asp-action="Apagar" asp-route-id="@Model.Id">
+                    <i class="bi bi-trash me-2"></i> Confirmar
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

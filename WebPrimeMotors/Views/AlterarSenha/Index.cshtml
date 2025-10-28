@@ -1,0 +1,58 @@
+﻿@using WebPrimeMotors.Enum
+@model AlterarSenhaModel
+@{
+    ViewData["Title"] = "Alterar Senha do Usuário";
+}
+
+<div class="d-flex justify-content-center my-5">
+    <div class="card shadow-sm flex-grow-1" style="max-width: 600px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Alterar Senha</h2>
+
+            @if (TempData["MensagemSucesso"] != null)
+            {
+                <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+                    <span>@TempData["MensagemSucesso"]</span>
+                    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+                </div>
+            }
+
+            @if (TempData["MensagemErro"] != null)
+            {
+                <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
+                    <span>@TempData["MensagemErro"]</span>
+                    <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+                </div>
+            }
+
+            <form asp-controller="AlterarSenha" asp-action="Alterar" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Senha Atual</label>
+                    <input type="password" asp-for="SenhaAtual" class="form-control" placeholder="Digite a senha atual">
+                    @Html.ValidationMessageFor(x => x.SenhaAtual, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nova Senha</label>
+                    <input type="password" asp-for="NovaSenha" class="form-control" placeholder="Digite a nova senha">
+                    @Html.ValidationMessageFor(x => x.NovaSenha, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Confirmar Nova Senha</label>
+                    <input type="password" asp-for="ConfirmarNovaSenha" class="form-control" placeholder="Confirme a nova senha">
+                    @Html.ValidationMessageFor(x => x.ConfirmarNovaSenha, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-key-fill me-2"></i> Alterar
+                    </button>
+                    <a class="btn btn-secondary btn-lg" asp-controller="Home" asp-action="Index">
+                        <i class="bi bi-arrow-left me-2"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

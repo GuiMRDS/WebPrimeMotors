@@ -1,0 +1,94 @@
+﻿@model List<VeiculoModel>
+@{
+    ViewData["Title"] = "Gestão de Veículos";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-5 text-dark">Gestão de Veículos</h1>
+    <a class="btn btn-success d-flex align-items-center" asp-controller="Veiculo" asp-action="Criar">
+        <i class="bi bi-plus-circle me-2"></i> Adicionar Novo Veículo
+    </a>
+</div>
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show d-flex justify-content-between align-items-center" role="alert">
+        @TempData["MensagemSucesso"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between align-items-center" role="alert">
+        @TempData["MensagemErro"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle rounded shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Carro</th>
+                <th>Modelo</th>
+                <th>Cor</th>
+                <th>Ano</th>
+                <th>Kilometragem (k/h)</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var veiculo in Model)
+                {
+                    <tr>
+                        <th scope="row">@veiculo.Id</th>
+                        <td>@veiculo.Carro</td>
+                        <td>@veiculo.Modelo</td>
+                        <td>@veiculo.Cor</td>
+                        <td>@veiculo.Ano</td>
+                        <td>@veiculo.Kilometragem</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a class="btn btn-primary btn-sm d-flex align-items-center" asp-route-id="@veiculo.Id" asp-controller="Veiculo" asp-action="Editar">
+                                    <i class="bi bi-pencil-square me-1"></i> Editar
+                                </a>
+                                <a class="btn btn-danger btn-sm d-flex align-items-center" asp-route-id="@veiculo.Id" asp-controller="Veiculo" asp-action="ApagarConfimar">
+                                    <i class="bi bi-trash me-1"></i> Apagar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+<style>
+    table.table {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        table.table th, table.table td {
+            vertical-align: middle;
+        }
+
+    .btn-group .btn {
+        transition: 0.2s;
+    }
+
+        .btn-group .btn:hover {
+            opacity: 0.85;
+        }
+
+    .table-responsive {
+        margin-top: 20px;
+    }
+</style>

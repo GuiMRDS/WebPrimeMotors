@@ -1,0 +1,54 @@
+﻿@using WebPrimeMotors.Enum
+@model UsuarioModel
+@{
+    ViewData["Title"] = "Editar Usuário";
+}
+
+<div class="d-flex justify-content-center" style="padding: 40px; min-height: calc(100vh - 20px);">
+    <div class="card shadow-sm flex-grow-1" style="max-width: 700px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="card-title text-center mb-5">Editar Usuário</h2>
+
+            <form asp-controller="Usuario" asp-action="Alterar" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-4">
+                    <label class="form-label">Nome</label>
+                    <input type="text" asp-for="Nome" class="form-control form-control-lg" placeholder="Digite o nome do usuário">
+                    @Html.ValidationMessageFor(x => x.Nome, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">E-mail</label>
+                    <input type="text" asp-for="Email" class="form-control form-control-lg" placeholder="Digite o e-mail do usuário">
+                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Login</label>
+                    <input type="text" asp-for="Login" class="form-control form-control-lg" placeholder="Digite o login do usuário">
+                    @Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Perfil</label>
+                    <select class="form-control form-control-lg" asp-for="Perfil">
+                        <option value="">Selecione</option>
+                        <option value="@PerfilEnum.Administrador">Administrador</option>
+                        <option value="@PerfilEnum.Padrao">Padrão</option>
+                    </select>
+                    @Html.ValidationMessageFor(x => x.Perfil, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between mt-5">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-pencil-square me-2"></i> Editar
+                    </button>
+                    <a class="btn btn-secondary btn-lg" asp-controller="Usuario" asp-action="Index">
+                        <i class="bi bi-arrow-left me-2"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

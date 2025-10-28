@@ -1,0 +1,51 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Editar Veículo";
+}
+
+<div class="d-flex justify-content-center my-5">
+    <div class="card shadow-sm flex-grow-1" style="max-width: 700px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Editar Veículo</h2>
+
+            <form asp-controller="Veiculo" asp-action="Alterar" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label class="form-label">Carro</label>
+                    <input type="text" asp-for="Carro" class="form-control">
+                    @Html.ValidationMessageFor(x => x.Carro, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Modelo</label>
+                    <input type="text" asp-for="Modelo" class="form-control">
+                    @Html.ValidationMessageFor(x => x.Modelo, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cor</label>
+                    <input type="text" asp-for="Cor" class="form-control">
+                    @Html.ValidationMessageFor(x => x.Cor, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ano</label>
+                    <input type="text" asp-for="Ano" class="form-control">
+                    @Html.ValidationMessageFor(x => x.Ano, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Kilometragem</label>
+                    <input type="text" asp-for="Kilometragem" class="form-control">
+                    @Html.ValidationMessageFor(x => x.Kilometragem, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-pencil-square me-2"></i> Alterar
+                    </button>
+                    <a class="btn btn-secondary btn-lg" asp-controller="Veiculo" asp-action="Index">
+                        <i class="bi bi-arrow-left me-2"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Adicionar Veículo";
+}
+
+<div class="d-flex justify-content-center my-5">
+    <div class="card shadow-sm flex-grow-1" style="max-width: 700px; width: 100%;">
+        <div class="card-body p-5">
+            <h2 class="card-title text-center mb-4">Adicionar Novo Veículo</h2>
+
+            <form asp-controller="Veiculo" asp-action="Criar" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Carro</label>
+                    <input type="text" asp-for="Carro" class="form-control" placeholder="Digite o nome do carro">
+                    @Html.ValidationMessageFor(x => x.Carro, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Modelo</label>
+                    <input type="text" asp-for="Modelo" class="form-control" placeholder="Digite o modelo do carro">
+                    @Html.ValidationMessageFor(x => x.Modelo, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Cor</label>
+                    <input type="text" asp-for="Cor" class="form-control" placeholder="Digite a cor do carro">
+                    @Html.ValidationMessageFor(x => x.Cor, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ano</label>
+                    <input type="text" asp-for="Ano" class="form-control" placeholder="Digite o ano do carro">
+                    @Html.ValidationMessageFor(x => x.Ano, "", new { @class = "text-danger" })
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Kilometragem</label>
+                    <input type="text" asp-for="Kilometragem" class="form-control" placeholder="Digite a kilometragem do carro">
+                    @Html.ValidationMessageFor(x => x.Kilometragem, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button type="submit" class="btn btn-success btn-lg">
+                        <i class="bi bi-plus-circle me-2"></i> Adicionar
+                    </button>
+                    <a class="btn btn-secondary btn-lg" asp-controller="Veiculo" asp-action="Index">
+                        <i class="bi bi-arrow-left me-2"></i> Voltar
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

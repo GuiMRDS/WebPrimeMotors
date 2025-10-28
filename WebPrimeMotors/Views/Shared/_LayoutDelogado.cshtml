@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Web Prime Motors</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebPrimeMotors.styles.css" asp-append-version="true" />
+    <link href="https://cdn.datatables.net/v/dt/dt-2.3.4/datatables.min.css" rel="stylesheet" integrity="sha384-pmGS6IIcXhAVIhcnh9X/mxffzZNHbuxboycGuQQoP3pAbb0SwlSUUHn2v22bOenI" crossorigin="anonymous">
+</head>
+<body class="d-flex flex-column min-vh-100">
+        <header></header>
+
+        <main role="main" class="flex-fill p-0 m-0">
+            @RenderBody()
+        </main>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto m-0">
+        <div class="container">
+            <p class="mb-1">
+                &copy; @DateTime.Now.Year - <strong>Web Prime Motors</strong>
+            </p>
+            <p class="small mb-0">
+                Desenvolvido por <a href="#" class="text-decoration-none text-primary">Guilherme Marinho</a>
+            </p>
+        </div>
+    </footer>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.3.4/datatables.min.js" integrity="sha384-X2pTSfom8FUa+vGQ+DgTCSyBZYkC1RliOduHa0X96D060s7Q//fnOh3LcazRNHyo" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

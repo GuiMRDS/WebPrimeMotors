@@ -1,0 +1,80 @@
+﻿@model LoginModel
+@{
+    Layout = "_LayoutDelogado";
+    ViewData["Title"] = "Login";
+}
+
+
+
+
+<section class="vh-100 d-flex align-items-center justify-content-center" style="background-color: hsl(0, 0%, 96%)">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
+                <h1 class="display-5 fw-bold mb-4">
+                    Sistema de Gerenciamento <br />
+                    <span class="text-primary">Web Prime Motors</span>
+                </h1>
+                <p class="text-muted">
+                    Acesse o sistema para gerenciar veículos, usuários e empréstimos com praticidade e segurança.
+                </p>
+            </div>
+
+            <div class="col-lg-5 col-md-8 col-sm-10">
+                <div class="card shadow-lg border-0">
+                    <div class="card-body p-5">
+
+                        <h3 class="text-center mb-4 text-primary fw-bold">Login</h3>
+
+                        @if (TempData["MensagemSucesso"] != null)
+                        {
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                @TempData["MensagemSucesso"]
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        @if (TempData["MensagemErro"] != null)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @TempData["MensagemErro"]
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
+
+                        <form asp-controller="Login" asp-action="Entrar" method="post">
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="login">Login</label>
+                                <input type="text" id="login" class="form-control" asp-for="Login" placeholder="Digite seu login" />
+                                @Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="senha">Senha</label>
+                                <input type="password" id="senha" class="form-control" asp-for="Senha" placeholder="Digite sua senha" />
+                                @Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span>Esqueceu a senha?</span>
+                                <a asp-action="RedefinirSenha"
+                                   asp-controller="Login"
+                                   class="text-primary text-gradient fw-bold text-decoration-none">
+                                    Redefinir minha senha
+                                </a>
+                            </div>
+
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-block mb-3">
+                                    Entrar
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
