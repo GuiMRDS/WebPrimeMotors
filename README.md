@@ -83,5 +83,5 @@ Autor
 
 Guilherme Marinho
 
-E-mail: guimars22@gmail.com
-LinkedIn: linkedin.com/in/guilherme-marinho04
+-- **E-mail:** guimars22@gmail.com
+-- **LinkedIn:** linkedin.com/in/guilherme-marinho04
