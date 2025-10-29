@@ -2,7 +2,7 @@
 
 Sistema de gerenciamento para concessionária de veículos, desenvolvido em **ASP.NET Core MVC** com **C#**, utilizando **Entity Framework Core** e **Bootstrap** para interface responsiva.  
 
-**Site Online:** [https://webprimemotors.com](https://webprimemotors.com)
+**Site Online:** https://webprimemotors.somee.com/
 
 ---
 
