@@ -4,31 +4,38 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="display-5 text-dark">Cadastro de Usuários</h1>
-    <a class="btn btn-primary d-flex align-items-center" asp-controller="Usuario" asp-action="Criar">
+    <h1 class="display-5" style="color: var(--text-color);">Cadastro de Usuários</h1>
+
+    <a class="btn d-flex align-items-center shadow-sm"
+       asp-controller="Usuario" asp-action="Criar"
+       style="background-color: var(--link-color); color: #fff; border: none;">
         <i class="bi bi-person-plus me-2"></i> Adicionar novo Usuário
     </a>
 </div>
 
 @if (TempData["MensagemSucesso"] != null)
 {
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <div class="alert fade show border-0 shadow-sm d-flex justify-content-between align-items-center"
+         style="background-color: var(--success-bg); color: var(--success-text);" role="alert">
         @TempData["MensagemSucesso"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 
 @if (TempData["MensagemErro"] != null)
 {
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert fade show border-0 shadow-sm d-flex justify-content-between align-items-center"
+         style="background-color: var(--danger-bg); color: var(--danger-text);" role="alert">
         @TempData["MensagemErro"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 }
 
-<div class="table-responsive">
-    <table class="table table-striped table-hover align-middle rounded shadow-sm" id="table">
-        <thead class="table-dark">
+<div class="table-responsive shadow rounded-4">
+    <table id="table" class="table align-middle text-center"
+           style="background-color: var(--card-bg); color: var(--text-color); border-radius: 12px; overflow: hidden;">
+
+        <thead style="background-color: var(--hover-bg); color: var(--text-color);">
             <tr>
                 <th>#</th>
                 <th>Nome</th>
@@ -40,25 +47,32 @@
                 <th>Ações</th>
             </tr>
         </thead>
+
         <tbody>
             @if (Model != null && Model.Any())
             {
                 foreach (var usuario in Model)
                 {
-                    <tr>
-                        <th scope="row">@usuario.Id</th>
+                    <tr style="border-bottom: 1px solid var(--hover-bg);">
+                        <td>@usuario.Id</td>
                         <td>@usuario.Nome</td>
                         <td>@usuario.Login</td>
                         <td>@usuario.Email</td>
                         <td>@usuario.Perfil</td>
                         <td>@usuario.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
                         <td>@(usuario.DataAtualizacao.HasValue? usuario.DataAtualizacao.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+
                         <td>
-                            <div class="btn-group" role="group">
-                                <a class="btn btn-sm btn-primary d-flex align-items-center" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar">
+                            <div class="d-flex justify-content-center gap-2">
+                                <a class="btn btn-sm d-flex align-items-center shadow-sm"
+                                   asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar"
+                                   style="background-color: var(--link-color); color: #fff;">
                                     <i class="bi bi-pencil-square me-1"></i> Editar
                                 </a>
-                                <a class="btn btn-sm btn-danger d-flex align-items-center" asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfimar">
+
+                                <a class="btn btn-sm d-flex align-items-center shadow-sm"
+                                   asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfimar"
+                                   style="background-color: var(--danger-bg); color: #fff;">
                                     <i class="bi bi-trash me-1"></i> Apagar
                                 </a>
                             </div>
@@ -67,26 +81,27 @@
                 }
             }
         </tbody>
+
     </table>
 </div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
 <style>
-    table.table {
-        border-radius: 8px;
-        overflow: hidden;
+    table.table th, table.table td {
+        vertical-align: middle;
     }
 
-        table.table th, table.table td {
-            vertical-align: middle;
-        }
-
-    .btn-group .btn {
+    .btn-sm {
         transition: 0.2s;
     }
 
-        .btn-group .btn:hover {
+        .btn-sm:hover {
             opacity: 0.85;
         }
+
+    /* Listras de tabela compatíveis com tema */
+    table tbody tr:nth-child(even) {
+        background-color: var(--hover-bg);
+    }
 </style>

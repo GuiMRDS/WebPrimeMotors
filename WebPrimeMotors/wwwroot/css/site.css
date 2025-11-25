@@ -1,26 +1,63 @@
+/* ---------------------------------------------------
+   Base e Tipografia
+--------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #f8f9fa;
 }
 
+/* ---------------------------------------------------
+   Foco e Acessibilidade
+--------------------------------------------------- */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* ---------------------------------------------------
+   Layout principal
+--------------------------------------------------- */
+main {
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.flex-grow-1 {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+
+/* ---------------------------------------------------
+   Componentes
+--------------------------------------------------- */
 .field-validation-error {
     color: #ff0000;
 }
@@ -34,58 +71,32 @@ body {
     height: 31px;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa; /* cor neutra */
-}
-
-main {
-    flex: 1 0 auto;
-    margin: 0;
-    padding: 0;
-}
-
-footer {
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0;
-}
-
-/* Hover sutil nos links do menu */
+/* ---------------------------------------------------
+   Navegação / Sidebar
+--------------------------------------------------- */
 .nav-link:hover {
-    background-color: #e7f1ff; /* azul claro do login */
+    background-color: #e7f1ff;
     border-radius: 5px;
-    color: #0d6efd !important; /* detalhe azul */
+    color: #0d6efd !important;
 }
 
-/* Botões do usuário */
-.btn-outline-primary {
-    font-size: 0.875rem;
-}
-
+/* ---------------------------------------------------
+   Botões Utilitários
+--------------------------------------------------- */
+.btn-outline-primary,
 .btn-outline-danger {
     font-size: 0.875rem;
-}
-
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.flex-grow-1 {
-    min-height: 100vh; /* Garante que acompanhe o viewport */
-    background-color: #f8f9fa; /* mesma cor do fundo da tela de login */
-}
-
-/* Botões e tabelas ficam responsivos */
-.table {
-    width: 100%;
 }
 
 .btn-block {
     display: block;
     width: 100%;
     margin-bottom: 0.5rem;
+}
+
+/* ---------------------------------------------------
+   Tabelas
+--------------------------------------------------- */
+.table {
+    width: 100%;
 }

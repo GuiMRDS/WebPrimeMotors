@@ -4,68 +4,89 @@
     ViewData["Title"] = "Login";
 }
 
+<section class="vh-100 d-flex align-items-center justify-content-center"
+         style="background-color: var(--bg-color); color: var(--text-color); transition: 0.3s;">
 
-
-
-<section class="vh-100 d-flex align-items-center justify-content-center" style="background-color: hsl(0, 0%, 96%)">
     <div class="container">
         <div class="row justify-content-center align-items-center">
+
+            <!-- Lado esquerdo -->
             <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start">
-                <h1 class="display-5 fw-bold mb-4">
+                <h1 class="display-5 fw-bold mb-4" style="color: var(--link-color);">
                     Sistema de Gerenciamento <br />
-                    <span class="text-primary">Web Prime Motors</span>
+                    <span style="color: var(--link-color);">Web Prime Motors</span>
                 </h1>
-                <p class="text-muted">
+                <p style="color: var(--text-color); opacity: 0.75;">
                     Acesse o sistema para gerenciar veículos, usuários e empréstimos com praticidade e segurança.
                 </p>
             </div>
 
+            <!-- Card de login -->
             <div class="col-lg-5 col-md-8 col-sm-10">
-                <div class="card shadow-lg border-0">
+                <div class="card shadow-lg border-0"
+                     style="background-color: var(--card-bg); color: var(--text-color); transition: 0.3s;">
+
                     <div class="card-body p-5">
 
-                        <h3 class="text-center mb-4 text-primary fw-bold">Login</h3>
+                        <h3 class="text-center mb-4 fw-bold" style="color: var(--link-color);">Login</h3>
 
                         @if (TempData["MensagemSucesso"] != null)
                         {
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0"
+                                 style="background-color: var(--success-bg); color: var(--success-text);" role="alert">
                                 @TempData["MensagemSucesso"]
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                         }
 
                         @if (TempData["MensagemErro"] != null)
                         {
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0"
+                                 style="background-color: var(--danger-bg); color: var(--danger-text);" role="alert">
                                 @TempData["MensagemErro"]
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                             </div>
                         }
 
                         <form asp-controller="Login" asp-action="Entrar" method="post">
+
+                            <!-- Login -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="login">Login</label>
-                                <input type="text" id="login" class="form-control" asp-for="Login" placeholder="Digite seu login" />
+                                <label class="form-label" for="login" style="color: var(--text-color);">
+                                    Login
+                                </label>
+                                <input type="text" id="login" class="form-control"
+                                       asp-for="Login" placeholder="Digite seu login"
+                                       style="background-color: var(--input-bg); color: var(--input-text); border-color: var(--input-border);" />
                                 @Html.ValidationMessageFor(x => x.Login, "", new { @class = "text-danger" })
                             </div>
 
+                            <!-- Senha -->
                             <div class="form-outline mb-4">
-                                <label class="form-label" for="senha">Senha</label>
-                                <input type="password" id="senha" class="form-control" asp-for="Senha" placeholder="Digite sua senha" />
+                                <label class="form-label" for="senha" style="color: var(--text-color);">
+                                    Senha
+                                </label>
+                                <input type="password" id="senha" class="form-control"
+                                       asp-for="Senha" placeholder="Digite sua senha"
+                                       style="background-color: var(--input-bg); color: var(--input-text); border-color: var(--input-border);" />
                                 @Html.ValidationMessageFor(x => x.Senha, "", new { @class = "text-danger" })
                             </div>
 
+                            <!-- Link de reset -->
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <span>Esqueceu a senha?</span>
+                                <span style="color: var(--text-color);">Esqueceu a senha?</span>
                                 <a asp-action="RedefinirSenha"
                                    asp-controller="Login"
-                                   class="text-primary text-gradient fw-bold text-decoration-none">
+                                   class="fw-bold text-decoration-none"
+                                   style="color: var(--link-color);">
                                     Redefinir minha senha
                                 </a>
                             </div>
 
+                            <!-- Botão Entrar -->
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-block mb-3">
+                                <button type="submit" class="btn btn-primary btn-block mb-3"
+                                        style="background-color: var(--link-color); border: none;">
                                     Entrar
                                 </button>
                             </div>
@@ -75,6 +96,8 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+
 </section>

@@ -1,0 +1,210 @@
+/* ============================================
+   VARIÁVEIS DO TEMA — LIGHT
+============================================ */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --hover-bg: #e9ecef;
+    --link-color: #0d6efd;
+    /* Sidebar fixa em preto */
+    --sidebar-text: #ffffff;
+    --danger-bg: #dc3545;
+    --danger-text: #ffffff;
+    --success-bg: #198754;
+    --success-text: #ffffff;
+    --input-bg: #ffffff;
+    --input-text: #212529;
+    --input-border: #ced4da;
+}
+
+/* ============================================
+   VARIÁVEIS DO TEMA — DARK
+============================================ */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e4e6eb;
+    --card-bg: #1e1f22;
+    --hover-bg: #2c2d31;
+    --link-color: #66b2ff;
+    /* Sidebar continua preta — só muda o texto */
+    --sidebar-text: #e4e6eb;
+    --danger-bg: #d9534f;
+    --danger-text: #ffffff;
+    --success-bg: #28a745;
+    --success-text: #ffffff;
+    --input-bg: #1e1f22;
+    --input-text: #e4e6eb;
+    --input-border: #444;
+}
+
+/* ============================================
+   GLOBAL
+============================================ */
+body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+    transition: 0.25s background-color, 0.25s color;
+}
+
+/* ============================================
+   CARDS
+============================================ */
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--hover-bg) !important;
+}
+
+/* ============================================
+   INPUTS
+============================================ */
+.form-control {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border-color: var(--input-border) !important;
+}
+
+    .form-control:focus {
+        border-color: var(--link-color) !important;
+        box-shadow: 0 0 6px var(--link-color) !important;
+    }
+
+/* ============================================
+   SIDEBAR — sempre preta
+============================================ */
+.sidebar {
+    background-color: #000 !important;
+    color: var(--sidebar-text) !important;
+    border-right: 1px solid var(--hover-bg);
+}
+
+    .sidebar .nav-link,
+    .sidebar .dropdown-item,
+    .sidebar i {
+        color: var(--sidebar-text) !important;
+    }
+
+        .sidebar .nav-link:hover,
+        .sidebar .dropdown-item:hover {
+            background-color: var(--hover-bg) !important;
+            color: var(--link-color) !important;
+        }
+
+/* ============================================
+   TABELAS
+============================================ */
+.table {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+    .table thead {
+        background-color: var(--hover-bg);
+    }
+
+    .table tbody tr:hover {
+        background-color: var(--hover-bg) !important;
+    }
+
+/* ============================================
+   ALERTAS
+============================================ */
+.alert-success {
+    background-color: var(--success-bg) !important;
+    color: var(--success-text) !important;
+    border: none !important;
+}
+
+.alert-danger {
+    background-color: var(--danger-bg) !important;
+    color: var(--danger-text) !important;
+    border: none !important;
+}
+
+/* ============================================
+   BOTÕES
+============================================ */
+.btn-primary {
+    background-color: var(--link-color) !important;
+    border: none !important;
+}
+
+.btn-secondary,
+.btn-outline-secondary {
+    color: var(--text-color) !important;
+    border-color: var(--hover-bg) !important;
+}
+
+.btn-secondary {
+    background-color: var(--hover-bg) !important;
+}
+
+.btn-outline-secondary:hover {
+    background-color: var(--hover-bg) !important;
+}
+
+/* ============================================
+   FOOTER
+============================================ */
+footer {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-top: 1px solid var(--hover-bg);
+}
+
+/* --------------------------
+   DATATABLES – TEMA INTEGRADO
+   -------------------------- */
+
+/* Fundo da tabela */
+table.dataTable {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Cabeçalho */
+table.dataTable thead {
+    background-color: var(--hover-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Linhas alternadas */
+table.dataTable tbody tr:nth-child(even) {
+    background-color: var(--hover-bg) !important;
+}
+
+/* Hover */
+table.dataTable tbody tr:hover {
+    background-color: var(--hover-bg) !important;
+}
+
+/* Campo de pesquisa */
+.dataTables_filter input {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border: 1px solid var(--input-border) !important;
+}
+
+/* Seleção por página */
+.dataTables_length select {
+    background-color: var(--input-bg) !important;
+    color: var(--input-text) !important;
+    border: 1px solid var(--input-border) !important;
+}
+
+/* Paginação */
+.dataTables_paginate .paginate_button {
+    color: var(--text-color) !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background-color: var(--hover-bg) !important;
+    color: var(--link-color) !important;
+    border-radius: 6px;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background-color: var(--hover-bg) !important;
+    color: var(--link-color) !important;
+}

@@ -1,8 +1,78 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Página Inicial";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bem vindo !!!</h1>
-    <p>Sistema de gestao de veiculos Web</p>
-</div>
+<section class="container-fluid py-5" style="color: var(--text-color);">
+
+    <div class="row justify-content-center">
+        <div class="col-xl-8 col-lg-9 col-md-10">
+
+            <div class="card shadow-lg border-0 rounded-4 text-center"
+                 style="background-color: var(--card-bg); color: var(--text-color);">
+
+                <div class="card-body p-5">
+
+                    <h1 class="fw-bold mb-3" style="color: var(--link-color);">
+                        Bem-vindo ao Web Prime Motors!
+                    </h1>
+
+                    <p class="lead mb-4" style="color: var(--text-color);">
+                        Sistema de gestão de veículos desenvolvido para proporcionar
+                        controle, organização e produtividade no dia a dia.
+                    </p>
+
+                    <hr class="my-4" style="border-color: var(--hover-bg);" />
+
+                    <div class="row text-center gy-4">
+
+
+                        <div class="col-md-4">
+                            <a asp-controller="Usuario" asp-action="Index"
+                               class="text-decoration-none">
+                                <div class="p-4 rounded-3 home-item"
+                                     style="background-color: var(--hover-bg); cursor: pointer;">
+                                    <i class="bi bi-people fs-2 mb-2" style="color: var(--link-color);"></i>
+                                    <h5 class="fw-semibold">Usuários</h5>
+                                    <p class="small">Gerencie contas e acessos</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <a asp-controller="Veiculo" asp-action="Index"
+                               class="text-decoration-none">
+                                <div class="p-4 rounded-3 home-item"
+                                     style="background-color: var(--hover-bg); cursor: pointer;">
+                                    <i class="bi bi-truck fs-2 mb-2" style="color: var(--link-color);"></i>
+                                    <h5 class="fw-semibold">Veículos</h5>
+                                    <p class="small">Cadastro e gerenciamento</p>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<style>
+    .home-item {
+        transition: 0.25s;
+    }
+
+        .home-item:hover {
+            background-color: var(--link-color) !important;
+            color: #fff !important;
+            transform: translateY(-4px);
+        }
+
+            .home-item:hover i {
+                color: #fff !important;
+            }
+</style>
