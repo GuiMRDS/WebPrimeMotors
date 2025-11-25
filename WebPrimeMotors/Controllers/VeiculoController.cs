@@ -39,6 +39,12 @@ namespace WebPrimeMotors.Controllers
             return View(veiculo);
         }
 
+        public IActionResult VenderConfimar(int id)
+        {
+            VeiculoModel veiculo = _veiculoRepositorio.ListarPorId(id);
+            return View(veiculo);
+        }
+
         public IActionResult Apagar(int id)
         {
             try
@@ -52,14 +58,40 @@ namespace WebPrimeMotors.Controllers
                 }
                 else
                 {
-                    TempData["MensagemErro"] = $"Ops, nao conseguimos apagar o veiculo com sucesso!";
+                    TempData["MensagemErro"] = $"Ops, não conseguimos apagar o veiculo com sucesso!";
                 }
 
                 return RedirectToAction("Index");
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Ops, nao conseguimos apagar o veiculo com sucesso, detalhe do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar o veiculo com sucesso, detalhe do erro {erro.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
+
+        public IActionResult Vender(int id)
+        {
+            try
+            {
+                bool vender = _veiculoRepositorio.Vender(id);
+
+
+                if (vender)
+                {
+                    TempData["MensagemSucesso"] = "Veiculo vendido com sucesso";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = $"Ops, não conseguimos vender o veiculo com sucesso!";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception erro)
+            {
+                TempData["MensagemErro"] = $"Ops, não conseguimos vender o veiculo com sucesso, detalhe do erro {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -81,7 +113,7 @@ namespace WebPrimeMotors.Controllers
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Ops, nao conseguimos adiciorar o veiculo com sucesso, detalhe do erro: {erro.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos adiciorar o veiculo com sucesso, detalhe do erro: {erro.Message}";
                 return RedirectToAction("index");
 
             }
@@ -104,7 +136,7 @@ namespace WebPrimeMotors.Controllers
             }
             catch (Exception erro)
             {
-                TempData["MensagemErro"] = $"Ops, nao conseguimos alterar o veiculo , detalhe do erro: {erro.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos alterar o veiculo , detalhe do erro: {erro.Message}";
                 return RedirectToAction("index");
 
             }

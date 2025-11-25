@@ -1,0 +1,40 @@
+﻿@model VeiculoModel
+@{
+    ViewData["Title"] = "Vender Veículo";
+}
+
+<div class="d-flex justify-content-center align-items-center"
+     style="padding: 40px; min-height: calc(100vh - 30px);">
+
+    <div class="card shadow-lg border-0 rounded-4"
+         style="flex: 1; max-width: 780px; background-color: var(--card-bg); color: var(--text-color);">
+
+        <div class="card-body p-5 text-center">
+
+            <h2 class="card-title mb-4" style="color: var(--success-bg);">
+                <i class="bi bi-check-circle-fill me-2"></i>
+                Confirmar Venda
+            </h2>
+
+            <p class="fs-5">
+                Tem certeza que deseja confirmar a venda do veículo:
+                <strong style="color: var(--link-color);">@Model.Carro</strong>?
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mt-5">
+
+                <a class="btn btn-secondary btn-lg px-4 shadow-sm rounded-3"
+                   asp-controller="Veiculo" asp-action="Index">
+                    <i class="bi bi-arrow-left-circle me-2"></i> Cancelar
+                </a>
+
+                <a class="btn btn-success btn-lg px-4 shadow-sm rounded-3"
+                   asp-controller="Veiculo" asp-action="Apagar" asp-route-id="@Model.Id"
+                   style="background-color: var(--success-bg); color: var(--success-text); border: none;">
+                    <i class="bi bi-check2-circle me-2"></i> Confirmar Venda
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,6 @@ namespace WebPrimeMotors.Repositorio
         VeiculoModel Adicionar(VeiculoModel veiculo);
         VeiculoModel Atualizar(VeiculoModel veiculo);
         bool Apagar(int id);
-
+        bool Vender(int id);
     }
 }

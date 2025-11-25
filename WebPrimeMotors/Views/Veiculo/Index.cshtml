@@ -63,6 +63,13 @@
                             <div class="d-flex justify-content-center gap-2">
                                 <a class="btn btn-sm d-flex align-items-center shadow-sm"
                                    asp-route-id="@veiculo.Id"
+                                   asp-controller="Veiculo" asp-action="Vender"
+                                   style="background-color: var(--success-bg); color: #fff;">
+                                    <i class="bi bi-pencil-square me-1"></i> Vender
+                                </a>
+
+                                <a class="btn btn-sm d-flex align-items-center shadow-sm"
+                                   asp-route-id="@veiculo.Id"
                                    asp-controller="Veiculo" asp-action="Editar"
                                    style="background-color: var(--link-color); color: #fff;">
                                     <i class="bi bi-pencil-square me-1"></i> Editar
