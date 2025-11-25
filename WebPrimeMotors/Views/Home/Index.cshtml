@@ -2,50 +2,44 @@
     ViewData["Title"] = "Página Inicial";
 }
 
-<section class="container-fluid py-5" style="color: var(--text-color);">
+<section class="container py-5 homepage-wrapper">
 
     <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-9 col-md-10">
+        <div class="col-xl-8 col-lg-10 col-md-11">
 
-            <div class="card shadow-lg border-0 rounded-4 text-center"
-                 style="background-color: var(--card-bg); color: var(--text-color);">
+            <div class="card shadow-lg border-0 rounded-4 home-card">
 
-                <div class="card-body p-5">
+                <div class="card-body p-5 text-center">
 
-                    <h1 class="fw-bold mb-3" style="color: var(--link-color);">
-                        Bem-vindo ao Web Prime Motors!
+                    <h1 class="fw-bold mb-3 home-title">
+                        Bem-vindo ao <span class="highlight">Web Prime Motors</span>!
                     </h1>
 
-                    <p class="lead mb-4" style="color: var(--text-color);">
-                        Sistema de gestão de veículos desenvolvido para proporcionar
-                        controle, organização e produtividade no dia a dia.
+                    <p class="lead mb-4">
+                        Sistema profissional de gestão de veículos, organizado para garantir
+                        produtividade, controle e eficiência no seu dia a dia.
                     </p>
 
-                    <hr class="my-4" style="border-color: var(--hover-bg);" />
+                    <hr class="home-divider" />
 
-                    <div class="row text-center gy-4">
+                    <div class="row text-center gy-4 justify-content-center">
 
-
-                        <div class="col-md-4">
-                            <a asp-controller="Usuario" asp-action="Index"
-                               class="text-decoration-none">
-                                <div class="p-4 rounded-3 home-item"
-                                     style="background-color: var(--hover-bg); cursor: pointer;">
-                                    <i class="bi bi-people fs-2 mb-2" style="color: var(--link-color);"></i>
-                                    <h5 class="fw-semibold">Usuários</h5>
-                                    <p class="small">Gerencie contas e acessos</p>
+                        <div class="col-md-4 col-sm-6">
+                            <a asp-controller="Usuario" asp-action="Index" class="text-decoration-none">
+                                <div class="home-item card-option">
+                                    <i class="bi bi-people-fill icon-option"></i>
+                                    <h5 class="fw-semibold mt-2">Usuários</h5>
+                                    <p class="small mb-0">Gerencie contas e acessos</p>
                                 </div>
                             </a>
                         </div>
 
-                        <div class="col-md-4">
-                            <a asp-controller="Veiculo" asp-action="Index"
-                               class="text-decoration-none">
-                                <div class="p-4 rounded-3 home-item"
-                                     style="background-color: var(--hover-bg); cursor: pointer;">
-                                    <i class="bi bi-truck fs-2 mb-2" style="color: var(--link-color);"></i>
-                                    <h5 class="fw-semibold">Veículos</h5>
-                                    <p class="small">Cadastro e gerenciamento</p>
+                        <div class="col-md-4 col-sm-6">
+                            <a asp-controller="Veiculo" asp-action="Index" class="text-decoration-none">
+                                <div class="home-item card-option">
+                                    <i class="bi bi-truck-front-fill icon-option"></i>
+                                    <h5 class="fw-semibold mt-2">Veículos</h5>
+                                    <p class="small mb-0">Cadastro e gerenciamento</p>
                                 </div>
                             </a>
                         </div>
@@ -62,17 +56,64 @@
 </section>
 
 <style>
-    .home-item {
-        transition: 0.25s;
+
+    /* =============================
+           ESTRUTURA PRINCIPAL
+        ==============================*/
+    .homepage-wrapper {
+        color: var(--text-color);
     }
 
-        .home-item:hover {
-            background-color: var(--link-color) !important;
+    .home-card {
+        background: var(--card-bg);
+        color: var(--text-color);
+        border-radius: 18px;
+        transition: 0.3s ease;
+    }
+
+    .home-title {
+        color: var(--text-color);
+        font-size: 2.2rem;
+    }
+
+    .highlight {
+        color: var(--link-color);
+    }
+
+    .home-divider {
+        border-color: var(--hover-bg);
+        opacity: 0.3;
+        margin-bottom: 2rem;
+    }
+
+    /* =============================
+           CARDS DE ACESSO
+        ==============================*/
+    .card-option {
+        background: var(--hover-bg);
+        padding: 30px 20px;
+        border-radius: 16px;
+        transition: 0.25s ease-in-out;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        cursor: pointer;
+    }
+
+    .icon-option {
+        font-size: 2.6rem;
+        color: var(--link-color);
+        transition: 0.2s;
+    }
+
+    .card-option:hover {
+        background: var(--link-color) !important;
+        transform: translateY(-6px);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        color: #fff !important;
+    }
+
+        .card-option:hover .icon-option {
             color: #fff !important;
-            transform: translateY(-4px);
+            transform: scale(1.1);
         }
 
-            .home-item:hover i {
-                color: #fff !important;
-            }
 </style>

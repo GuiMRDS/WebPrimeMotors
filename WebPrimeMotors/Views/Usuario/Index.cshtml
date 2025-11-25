@@ -3,105 +3,158 @@
     ViewData["Title"] = "Usuários";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="display-5" style="color: var(--text-color);">Cadastro de Usuários</h1>
+<!-- HEADER -->
+<div class="mb-4 d-flex justify-content-between align-items-center">
 
-    <a class="btn d-flex align-items-center shadow-sm"
-       asp-controller="Usuario" asp-action="Criar"
-       style="background-color: var(--link-color); color: #fff; border: none;">
-        <i class="bi bi-person-plus me-2"></i> Adicionar novo Usuário
+    <div>
+        <h2 class="fw-bold mb-1" style="color: var(--text-color);">Usuários</h2>
+        <span class="text-muted">Gerencie todos os usuários cadastrados no sistema</span>
+    </div>
+
+    <a asp-controller="Usuario" asp-action="Criar"
+       class="btn btn-primary shadow-sm px-4 py-2 d-flex align-items-center"
+       style="border-radius: 12px;">
+        <i class="bi bi-person-plus me-2"></i> Novo Usuário
     </a>
 </div>
 
+<!-- ALERTAS -->
 @if (TempData["MensagemSucesso"] != null)
 {
-    <div class="alert fade show border-0 shadow-sm d-flex justify-content-between align-items-center"
-         style="background-color: var(--success-bg); color: var(--success-text);" role="alert">
+    <div class="alert alert-success fade show shadow-sm border-0 rounded-3 d-flex align-items-center"
+         role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
         @TempData["MensagemSucesso"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
     </div>
 }
 
 @if (TempData["MensagemErro"] != null)
 {
-    <div class="alert fade show border-0 shadow-sm d-flex justify-content-between align-items-center"
-         style="background-color: var(--danger-bg); color: var(--danger-text);" role="alert">
+    <div class="alert alert-danger fade show shadow-sm border-0 rounded-3 d-flex align-items-center"
+         role="alert">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
         @TempData["MensagemErro"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
     </div>
 }
 
-<div class="table-responsive shadow rounded-4">
-    <table id="table" class="table align-middle text-center"
-           style="background-color: var(--card-bg); color: var(--text-color); border-radius: 12px; overflow: hidden;">
+<!-- CARD TABELA -->
+<div class="card shadow-sm border-0 rounded-4 overflow-hidden">
 
-        <thead style="background-color: var(--hover-bg); color: var(--text-color);">
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>Login</th>
-                <th>Email</th>
-                <th>Perfil</th>
-                <th>Data de Cadastro</th>
-                <th>Data de Atualização</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
+    <div class="card-header py-3"
+         style="background-color: var(--hover-bg); border-bottom: 1px solid rgba(0,0,0,0.1);">
+        <h5 class="mb-0 fw-semibold" style="color: var(--text-color);">
+            Lista de Usuários
+        </h5>
+    </div>
 
-        <tbody>
-            @if (Model != null && Model.Any())
-            {
-                foreach (var usuario in Model)
+    <div class="table-responsive">
+        <table class="table align-middle mb-0" style="color: var(--text-color);">
+
+            <thead style="background-color: var(--hover-bg);">
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Perfil</th>
+                    <th>Cadastrado</th>
+                    <th>Atualizado</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null && Model.Any())
                 {
-                    <tr style="border-bottom: 1px solid var(--hover-bg);">
-                        <td>@usuario.Id</td>
-                        <td>@usuario.Nome</td>
-                        <td>@usuario.Login</td>
-                        <td>@usuario.Email</td>
-                        <td>@usuario.Perfil</td>
-                        <td>@usuario.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
-                        <td>@(usuario.DataAtualizacao.HasValue? usuario.DataAtualizacao.Value.ToString("dd/MM/yyyy HH:mm") : "-")</td>
+                    foreach (var usuario in Model)
+                    {
+                        <tr style="transition: 0.25s;">
+                            <td>@usuario.Id</td>
+                            <td class="fw-semibold">@usuario.Nome</td>
+                            <td>@usuario.Login</td>
+                            <td>@usuario.Email</td>
 
-                        <td>
-                            <div class="d-flex justify-content-center gap-2">
-                                <a class="btn btn-sm d-flex align-items-center shadow-sm"
-                                   asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="Editar"
-                                   style="background-color: var(--link-color); color: #fff;">
-                                    <i class="bi bi-pencil-square me-1"></i> Editar
-                                </a>
+                            <td>
+                                <span class="badge rounded-pill px-3 py-2 shadow-sm"
+                                      style="background-color: var(--link-color); color: #fff;">
+                                    @usuario.Perfil
+                                </span>
+                            </td>
 
-                                <a class="btn btn-sm d-flex align-items-center shadow-sm"
-                                   asp-route-id="@usuario.Id" asp-controller="Usuario" asp-action="ApagarConfimar"
-                                   style="background-color: var(--danger-bg); color: #fff;">
-                                    <i class="bi bi-trash me-1"></i> Apagar
-                                </a>
-                            </div>
+                            <td>@usuario.DataCadastro.ToString("dd/MM/yyyy HH:mm")</td>
+
+                            <td>
+                                @(usuario.DataAtualizacao.HasValue
+                                                        ? usuario.DataAtualizacao.Value.ToString("dd/MM/yyyy HH:mm")
+                                                        : "-")
+                    </td>
+
+                            <td>
+                                <div class="d-flex justify-content-center gap-2">
+
+                                    <a asp-controller="Usuario" asp-action="Editar" asp-route-id="@usuario.Id"
+                                       class="btn btn-outline-primary btn-sm px-3 py-1 shadow-sm"
+                                       style="border-radius: 8px;">
+                                        <i class="bi bi-pencil-square me-1"></i> Editar
+                                    </a>
+
+                                    <a asp-controller="Usuario" asp-action="ApagarConfimar" asp-route-id="@usuario.Id"
+                                       class="btn btn-outline-danger btn-sm px-3 py-1 shadow-sm"
+                                       style="border-radius: 8px;">
+                                        <i class="bi bi-trash me-1"></i> Apagar
+                                    </a>
+
+                                </div>
+                            </td>
+                        </tr>
+                                }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="8" class="py-4 text-muted text-center">
+                            <i class="bi bi-info-circle me-2"></i> Nenhum usuário encontrado.
                         </td>
                     </tr>
                 }
-            }
-        </tbody>
+            </tbody>
 
-    </table>
+        </table>
+    </div>
+
 </div>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
 <style>
-    table.table th, table.table td {
-        vertical-align: middle;
+
+    /* REMOVE QUALQUER EFEITO DE HOVER NA TABELA */
+    table tr,
+    table td,
+    table th {
+        transition: none !important;
     }
 
+    table tbody tr:hover {
+        background-color: inherit !important;
+        cursor: default !important;
+    }
+
+    /* Efeito suave só nos botões */
     .btn-sm {
-        transition: 0.2s;
+        transition: 0.2s ease-in-out;
     }
 
         .btn-sm:hover {
-            opacity: 0.85;
+            opacity: .9;
+            transform: scale(1.04);
         }
 
-    /* Listras de tabela compatíveis com tema */
-    table tbody tr:nth-child(even) {
-        background-color: var(--hover-bg);
+    .badge {
+        font-size: 0.85rem;
+        letter-spacing: 0.3px;
     }
+
 </style>
